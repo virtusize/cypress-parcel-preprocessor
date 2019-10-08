@@ -6,13 +6,10 @@ const path = require('path')
 const bundlers = {}
 
 const bundleOnce = (filePath, outDir, outFile) => {
-  // seems parcel-bundler 1.7.0 does not want extension in the output filename
-  // TODO handle any filename extension
-  const basename = path.basename(outFile, '.js')
   const options = {
     watch: false,
     hmr: false,
-    outFile: basename,
+    outFile,
     outDir
   }
   const bundler = new ParcelBundler(filePath, options)
